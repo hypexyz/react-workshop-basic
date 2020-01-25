@@ -2,7 +2,6 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
 const Header = props => {
-    console.log('props', props)
     const { pathname } = props.location
 
     const navStyle = props.isResponsive ? 'hide-on-med-and-down' : ''

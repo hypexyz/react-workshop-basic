@@ -11,8 +11,8 @@ const ShowsList = ({ shows = [] }) => {
 
     return (
         <div className="row">
-            {shows.map(showObj => {
-                return <ShowCard show={showObj} />
+            {shows.map((showObj, index) => {
+                return <ShowCard show={showObj} key={index} />
             })}
         </div>
     )
