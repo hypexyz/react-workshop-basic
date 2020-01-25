@@ -6,8 +6,8 @@ const AboutPage = props => {
     return (
         <div>
             <h2>About page {params.pageId && `(${params.pageId})`}</h2>
-            <span className="waves-effect waves-light btn" onClick={props.history.goBack}>
-                <i className="material-icons left">keyboard_backspace</i>button
+            <span className="btn" onClick={props.history.goBack}>
+                <i class="icon icon-back"></i> Back
             </span>
             <p className="flow-text">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi provident,

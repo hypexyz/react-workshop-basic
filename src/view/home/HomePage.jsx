@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import ShowsList from './ShowsList'
+import Loading from '../../components/Loading'
 
 class HomePage extends Component {
     constructor(props) {
@@ -26,7 +27,8 @@ class HomePage extends Component {
             rating: showObj.rating.average,
             desc: showObj.summary,
             name: showObj.name,
-            image: showObj.image.original
+            image: showObj.image.original,
+            genres: showObj.genres
         }))
 
         this.setState({
@@ -46,20 +48,16 @@ class HomePage extends Component {
             }
         })
 
-        // this.setState({ isLoading: true }, () => {})
+        // this.setState({ isLoading: true }, () => { // Do things after isLoading is set})
     }
 
     render() {
         return (
             <>
-                <h2>Shows</h2>
-                <span
-                    className="waves-effect waves-light btn"
-                    onClick={this.onToggleLoading}>
-                    Toggle loading
-                </span>
+                <h1>Shows</h1>
+                <div class="divider"></div>
                 {this.state.isLoading ? (
-                    <h3>Loading...</h3>
+                    <Loading />
                 ) : (
                     <ShowsList shows={this.state.shows} />
                 )}

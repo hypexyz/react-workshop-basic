@@ -7,15 +7,18 @@ import Empty from '../components/Empty'
 
 const Main = props => (
     <main className="container">
-        <Switch>
-            <Route exact path="/">
-                <HomePage />
-            </Route>
-            <Route path="/about/:pageId?" component={AboutPage} />
-            <Route path="*">
-                <Empty message="Nista ovde" />
-            </Route>
-        </Switch>
+        <div className="column col-10 col-mx-auto">
+            <br />
+            <Switch>
+                <Route exact path="/">
+                    <HomePage />
+                </Route>
+                <Route path="/about/:pageId?" component={AboutPage} />
+                <Route path="*">
+                    <Empty message="Nista ovde" />
+                </Route>
+            </Switch>
+        </div>
     </main>
 )
 

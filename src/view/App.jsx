@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 
 const App = () => (
     <>
-        <Header appName={'DevClub App'} isResponsive={false} />
+        <Header appName={'DevClub'} isResponsive={false} />
         <Main />
         <Footer />
     </>

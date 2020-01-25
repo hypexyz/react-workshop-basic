@@ -10,7 +10,7 @@ const ShowsList = ({ shows = [] }) => {
     }
 
     return (
-        <div className="row">
+        <div className="columns">
             {shows.map((showObj, index) => {
                 return <ShowCard show={showObj} key={index} />
             })}
