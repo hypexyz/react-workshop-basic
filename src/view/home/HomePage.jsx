@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 
+import { showsService } from 'services/showsService'
+
+import SearchBar from 'components/SearchBar'
+
 import ShowsList from './ShowsList'
 
 class HomePage extends Component {
@@ -8,31 +12,28 @@ class HomePage extends Component {
 
         this.state = {
             isLoading: true,
-            shows: []
+            shows: [],
+            filteredShows: []
         }
 
         // this.onStopLoading = this.onStopLoading.bind(this)
     }
 
     componentDidMount() {
-        this.fetchShows()
+        this.loadShows()
     }
 
-    async fetchShows() {
-        const response = await fetch('http://api.tvmaze.com/shows')
-        const showsData = await response.json()
-
-        const myShows = showsData.map(showObj => ({
-            rating: showObj.rating.average,
-            desc: showObj.summary,
-            name: showObj.name,
-            image: showObj.image.original
-        }))
+    async loadShows() {
+        const shows = await showsService.fetchShows()
 
         this.setState({
             isLoading: false,
-            shows: myShows
+            shows
         })
+    }
+
+    handleShowSearch = inputText => {
+        this.setState({ inputText })
     }
 
     onToggleLoading = e => {
@@ -50,6 +51,12 @@ class HomePage extends Component {
     }
 
     render() {
+        const filteredShows = this.state.inputText
+            ? this.state.shows.filter(show => {
+                  return show.name.toLowerCase().includes(this.state.inputText)
+              })
+            : this.state.shows
+
         return (
             <>
                 <h2>Shows</h2>
@@ -58,10 +65,11 @@ class HomePage extends Component {
                     onClick={this.onToggleLoading}>
                     Toggle loading
                 </span>
+                <SearchBar onSearch={this.handleShowSearch} />
                 {this.state.isLoading ? (
                     <h3>Loading...</h3>
                 ) : (
-                    <ShowsList shows={this.state.shows} />
+                    <ShowsList shows={filteredShows} />
                 )}
             </>
         )

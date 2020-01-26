@@ -1,9 +1,10 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
+import Empty from 'components/Empty'
+
 import HomePage from './home/HomePage'
 import AboutPage from './about/AboutPage'
-import Empty from '../components/Empty'
 
 const Main = props => (
     <main className="container">

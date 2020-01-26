@@ -13,7 +13,8 @@ const Card = ({
                 <span className="card-title">{title}</span>
             </div>
             <div className="card-content">
-                <p>{description}</p>
+                {/* <p>{description}</p> */}
+                <p dangerouslySetInnerHTML={description} />
             </div>
         </div>
     </div>
@@ -22,7 +23,9 @@ const Card = ({
 Card.propTypes = {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.exact({
+        __html: PropTypes.string
+    })
 }
 
 // Card.defaultProps = {

@@ -1,17 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Card from '../../components/Card'
+import Show from 'models/Show'
+
+import Card from 'components/Card'
 
 const ShowCard = ({ show }) => {
-    const { name, image, rating, desc } = show
-
-    const title = `${name} (${rating})`
-    return <Card image={image} title={title} description={desc} />
+    // console.log('show :', show)
+    const { image, title, descriptionHtml } = show
+    return <Card image={image} title={title} description={descriptionHtml} />
 }
 
 ShowCard.propTypes = {
-    show: PropTypes.object.isRequired
+    show: PropTypes.objectOf(PropTypes.instanceOf(Show))
 }
 
 export default ShowCard

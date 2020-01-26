@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Empty from 'components/Empty'
+
 import ShowCard from './ShowCard'
-import Empty from '../../components/Empty'
 
 const ShowsList = ({ shows = [] }) => {
     if (!shows.length) {

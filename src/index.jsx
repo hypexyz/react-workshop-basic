@@ -4,7 +4,7 @@ import { HashRouter } from 'react-router-dom'
 
 import './index.css'
 
-import App from './view/App'
+import App from 'view/App'
 
 ReactDOM.render(
     <HashRouter>
